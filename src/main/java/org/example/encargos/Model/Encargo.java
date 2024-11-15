@@ -27,6 +27,7 @@ public class Encargo {
 
     @Column(name = "fecha_encargo")
     private LocalDate fechaEncargo;
+
     @Column(name = "fecha_entrega")
     private LocalDate fechaEntrega;
 
