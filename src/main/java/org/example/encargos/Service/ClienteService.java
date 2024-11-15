@@ -41,6 +41,9 @@ public class ClienteService {
             clienteRepository.deleteById(clienteid);
             return true;
         }
+        if (!clienteRepository.existsById(clienteid)) {
+            throw new RuntimeException("Cliente no encontrado con id: " + clienteid);
+        }
         return false;
     }
 }

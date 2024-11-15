@@ -25,9 +25,9 @@ public class Encargo {
     @JoinColumn(name = "menu_id", nullable = false)
     private Menu menu;
 
-    @Column(name = "fechaEncargo")
+    @Column(name = "fecha_encargo")
     private LocalDate fechaEncargo;
-    @Column(name = "fechaEntrega")
+    @Column(name = "fecha_entrega")
     private LocalDate fechaEntrega;
 
 }

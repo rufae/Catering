@@ -17,14 +17,12 @@ public class EmpleadoController {
     @Autowired
     private EmpleadoService empleadoService;
 
-    // GET @/empleados/{id}: obtiene el empleado según el id
     @GetMapping("/{id}")
     public ResponseEntity<Empleado> obtenerEmpleadoPorId(@PathVariable Long id) {
         Optional<Empleado> empleado = empleadoService.obtenerEmpleadoPorId(id);
         return empleado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // DELETE @/empleados/{idemp}: elimina un empleado específico
     @DeleteMapping("/{idemp}")
     public ResponseEntity<Void> eliminarEmpleado(@PathVariable Long idemp) {
         if (empleadoService.eliminarEmpleado(idemp)) {
@@ -34,20 +32,17 @@ public class EmpleadoController {
         }
     }
 
-    // POST @/empleados: crea un nuevo empleado
     @PostMapping
     public ResponseEntity<Empleado> crearEmpleado(@RequestBody Empleado empleado) {
         Empleado nuevoEmpleado = empleadoService.crearEmpleado(empleado);
         return new ResponseEntity<>(nuevoEmpleado, HttpStatus.CREATED);
     }
 
-    // GET @/empleados: lista todos los empleados que hay en la empresa
     @GetMapping
     public List<Empleado> listarEmpleados() {
         return empleadoService.listarEmpleados();
     }
 
-    // PUT @/empleados/{idemp}: actualiza los datos de un empleado
     @PutMapping("/{idemp}")
     public ResponseEntity<Empleado> actualizarEmpleado(@PathVariable Long idemp, @RequestBody Empleado empleadoDetalles) {
         Optional<Empleado> empleadoActualizado = empleadoService.actualizarEmpleado(idemp, empleadoDetalles);
