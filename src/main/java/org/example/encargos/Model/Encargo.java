@@ -2,6 +2,8 @@ package org.example.encargos.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 
@@ -19,10 +21,12 @@ public class Encargo {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "menu_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Menu menu;
 
     @Column(name = "fecha_encargo")
